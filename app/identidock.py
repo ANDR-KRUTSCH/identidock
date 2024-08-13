@@ -1,4 +1,5 @@
 import hashlib
+import html
 
 import requests
 import redis
@@ -19,7 +20,8 @@ def mainpage():
     name = default_name
     
     if request.method == 'POST':
-        name = request.form['name']
+        name = html.escape(s=request.form['name'], quote=True)
+        print(1)
     
     salted_name: str = salt + name
     name_hash = hashlib.sha256(string=salted_name.encode()).hexdigest()
@@ -32,6 +34,7 @@ def mainpage():
 
 @app.route(rule='/monster/<name>')
 def get_identicon(name):
+    name = html.escape(s=name, quote=True)
 
     image = cache.get(name=name)
 

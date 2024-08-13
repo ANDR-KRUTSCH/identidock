@@ -2,7 +2,7 @@ services:
   dnmonster:
     image: amouat/dnmonster:latest
     ports:
-      - "8080:8080"
+      - "8085:8080"
 
   redis:
     image: redis:latest

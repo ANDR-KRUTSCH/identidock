@@ -12,11 +12,10 @@ services:
   identidock:
     build: .
     ports:
-      - "5000:5000"
+      - "9090:9090"
+      - "9191:9191"
     environment:
-      - ENV=DEV
-    volumes:
-      - ./app:/app
+      - ENV=PROD
     depends_on:
       - dnmonster
       - redis
