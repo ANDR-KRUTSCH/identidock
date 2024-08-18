@@ -1,0 +1,26 @@
+services:
+  proxy:
+    image: proxy
+    ports:
+      - "80:80"
+    environment:
+      - NGINX_HOST=127.0.0.1
+      - NGINX_PROXY=http://identidock:9090
+
+  dnmonster:
+    image: amouat/dnmonster:latest
+    ports:
+      - "8085:8080"
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+
+  identidock:
+    build: .
+    volumes:
+      - ./app:/app
+    depends_on:
+      - dnmonster
+      - redis
