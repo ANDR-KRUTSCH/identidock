@@ -2,6 +2,11 @@ venv
 .git
 .gitignore
 Dockerfile
+Dockerfile-curl
 docker-compose-dev.yml
 docker-compose-prod.yml
+docker-compose-prod-proxy.yml
+docker-compose-prod-proxy-logging.yml
+docker-compose-jenkins.yml
 README.md
+README.txt
